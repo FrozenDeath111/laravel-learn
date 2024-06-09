@@ -67,7 +67,13 @@ class SchoolController extends AdminController
             $path = $form->path;
 
             $fileContent = file($path);
+            $count = true;
             foreach ($fileContent as $line) {
+                if ($count) {
+                    $count = false;
+                    continue;
+                }
+
                 $data = str_getcsv($line);
 
                 $schooldata = new SchoolData();
